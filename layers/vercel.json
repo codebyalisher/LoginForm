@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "layers/views/**",
+      "use": "@vercel/static-build",
+      "config": { "outputDirectory": "layers/views" }
+    },
+    {
+      "src": "layers/**",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "layers/views/$1"
+    }
+  ]
+}

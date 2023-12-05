@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Login and Form Example</title>
+</head>
+
+<body>
+    <h1>Login and Form Example</h1>
+
+    <form id="loginForm" action="/apilayer/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <button type="button" onclick="submitLoginForm()">Login</button>
+    </form>
+    <br><br>
+    <form action="/apilayer/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <button type="submit" onclick="submitform()">Submit</button>
+    </form>
+
+    <script>
+function submitLoginForm() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    fetch('/apilayer/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data); // Log the response from the server
+        // You can update the UI or perform further actions based on the response
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+alert('Login form submitted');
+}    
+    </script>
+</body>
+
+</html>
