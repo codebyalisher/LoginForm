@@ -57,3 +57,8 @@ Responsibility:
 Defines the structure and style of the HTML page. Flow:
 
 HTML file contains two forms, one for login and another for form submission. Forms have action attributes pointing to the corresponding API routes (/apilayer/login and /apilayer/submit). CSS file provides styling for the HTML elements. 6. Flow Summary: When a user accesses the application, the server starts listening on the specified port (3000). Upon accessing the HTML page, the browser makes requests for the HTML and CSS files. The server serves these static files from the layers directory. When a user submits a form, the browser makes a POST request to the corresponding API route. The server processes the request through middleware and routes, eventually reaching the business logic for handling login or form submission. Business logic interacts with external services and data storage as needed. This flow illustrates the interactions between different components in Node.js/Express application.
+
+###How to run this project:######
+1-clone the project
+2-run the command--> npm i
+3-now run this command-->npx nodemon layers/app_apilayer.js
