@@ -2,19 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "layers/views/**",
-      "use": "@vercel/static-build",
-      "config": { "outputDirectory": "layers/views" }
-    },
-    {
-      "src": "layers/**",
+      "src": "bkndarchitechure/**",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
+      "src": "/index",
+      "dest": "/bkndarchitechure/app_apilayer.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "layers/views/$1"
+      "dest": "/bkndarchitechure/app_apilayer.js"
     }
   ]
 }
